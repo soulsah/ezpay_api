@@ -5,17 +5,16 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     database: process.env.DB_DATABASE,
-    port: 5432
+    port: 5433
 });
 
 export async function connectDatabase() {
     try {
         await pool.connect();
-        console.log('Conexão com o banco de dados PostgreSQL estabelecida');
+        console.log('🔥🔥 Connected to the database! 🔥🔥');
     } catch (error) {
-        console.error('Erro ao conectar ao banco de dados PostgreSQL:', error);
+        console.error('Failed to connect to the database: ', error);
         throw error;
     }
 }
-
 export default pool;

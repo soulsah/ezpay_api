@@ -1,6 +1,9 @@
 import express from "express";
 import { connectDatabase } from "./adapters/database";
+import dotenv from 'dotenv';
+import router from "./routes/router";
 
+dotenv.config();
 
 const cors = require("cors");
 
@@ -9,6 +12,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(router);
 
 connectDatabase().catch((error) => {
     console.error('Database connection error:', error);
